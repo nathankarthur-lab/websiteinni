@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Clickable Image Message</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background: #f5f0f5;
+}
+
+img {
+    width: 250px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+img:hover {
+    transform: scale(1.08);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    width: 300px;
+    z-index: 10;
+}
+
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #d477a5;
+    color: white;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #b95785;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 5;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Click the picture ❤️</h2>
+
+<img
+src="https://placehold.co/400x300?text=Click+Me"
+alt="Click me"
+onclick="openPopup()"
+>
+
+<div class="overlay" id="overlay"
+onclick="closePopup()"></div>
+
+<div class="popup" id="popup">
+
+<h2>A Little Message ❤️</h2>
+
+<p>
+Hi!
+
+I just wanted to send you a little message.
+I hope this makes you smile!
+
+Lots of love ❤️
+</p>
+
+<button onclick="sendEmail()">
+Send Email 💌
+</button>
+
+<button onclick="closePopup()">
+Close
+</button>
+
+</div>
+
+<script>
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+
+function sendEmail() {
+    const subject = "A Little Message ❤️";
+    const message = "Hi!\n\nI just wanted to send you a little message.\nI hope this makes you smile!\n\nLots of love ❤️";
+
+    window.location.href =
+        "mailto:?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(message);
+}
+</script>
+
+</body>
+</html>
